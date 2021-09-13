@@ -1,6 +1,6 @@
 const db = require('../db/db')
 
-const userDrinks = {
+const UserDrinks = {
   create(userId, drink, mixins_1, mixins_2, sugar_level, ice_level) {
     sql = `
       INSERT INTO users_drinks(userId, drink, mixins_1, mixins_2, sugar_level, ice_level)
@@ -12,5 +12,5 @@ const userDrinks = {
       })
   },
 
-  
 }
+module.exports = UserDrinks
