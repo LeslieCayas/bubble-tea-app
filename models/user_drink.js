@@ -12,5 +12,17 @@ const UserDrinks = {
       })
   },
 
+  findDrinksByUser(userId) {
+    const sql = `
+      SELECT * FROM users_drinks
+      WHERE userId = $1
+    `
+
+    return db.query(sql, [userId])
+      .then(dbResponse => {
+        return dbResponse.rows
+      })
+  }
+
 }
 module.exports = UserDrinks
