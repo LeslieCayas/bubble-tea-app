@@ -5,6 +5,7 @@ const app = express();
 const path = require('path');
 const drinksController = require('./controllers/drinks_controller')
 const userDrinksController = require('./controllers/user_drinks_controller')
+const usersController = require('./controllers/users_controller')
 
 app.use(express.json())
 app.use(express.static('./client/build'))
@@ -18,5 +19,6 @@ app.get('/', (req, res) => {
 // })
 
 // app.use(express.static('client'))
+app.use('/api/users', usersController)
 app.use('/api/drinks', drinksController)
 app.use('/api/userDrinks', userDrinksController)

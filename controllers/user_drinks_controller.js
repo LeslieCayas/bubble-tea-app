@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
 })
 
 router.patch('/', (req, res) => {
+  // update counter with state?
   const { drink, mixins_1, mixins_2, sugar_level, ice_level, counter, id} = req.body
   UserDrink.updateUserDrinks(drink, mixins_1, mixins_2, sugar_level, ice_level, counter, id)
     .then(updatedInfo => {
