@@ -3,7 +3,9 @@ const router = express.Router()
 const UserDrink = require('../models/user_drink')
 
 router.get('/', (req, res) => {
-  const {userId} = req.body
+  // replace userId with sessions userId
+
+  const { userId } = req.body
 
   UserDrink.findDrinksByUser(userId)
     .then(userDrinks => {
@@ -13,10 +15,20 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   // replace userId with sessions userId
-  const {userId, drink, mixins_1, mixins_2, sugar_level, ice_level} = req.body
+  const { userId, drink, mixins_1, mixins_2, sugar_level, ice_level } = req.body
   UserDrink.create(userId, drink, mixins_1, mixins_2, sugar_level, ice_level)
     .then(userDrink => {
       res.json(userDrink)
     })
 })
+
+router.patch('/', (req, res) => {
+  const { drink, mixins_1, mixins_2, sugar_level, ice_level, counter, id} = req.body
+  UserDrink.updateUserDrinks(drink, mixins_1, mixins_2, sugar_level, ice_level, counter, id)
+    .then(updatedInfo => {
+      res.json(updatedInfo)
+    })
+})
+
+
 module.exports = router
