@@ -1,8 +1,5 @@
-function validationError(message) {
-  const error = new Error(message);
-  error.status = 422;
-  return error;
-}
+const validatePassword = require('./validate_password')
+const validationError = require('./validation_error')
 
 function validateUser(req, res, next) {
   const username = req.body.username
@@ -19,21 +16,7 @@ function validateUser(req, res, next) {
     throw validationError("Password is required")
   }
 
-  if (password.length < 8) {
-    throw validationError("Password must be at least 8 characters")
-  }
-  if (!(/[a-z]/.test(password))) {
-    throw validationError("Password must contain 1 lowercase letter")
-  }
-  if (!(/[A-Z]/.test(password))) {
-    throw validationError("Password must contain 1 uppercase letter")
-  }
-  if (!(/[0-9]/.test(password))) {
-    throw validationError("Password must contain 1 numeric letter")
-  }
-  if (!(/[^\w\s\d]/.test(password))) {
-    throw validationError("Password must contain 1 non alpha-numeric letter")
-  }
+  validatePassword(password)
 
   next();
 }
