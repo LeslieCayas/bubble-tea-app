@@ -5,7 +5,7 @@ const UserDrink = require('../models/user_drink')
 router.get('/', (req, res) => {
   // replace userId with sessions userId
 
-  const { userId } = req.body
+  const { userId } = req.session
 
   UserDrink.findDrinksByUser(userId)
     .then(userDrinks => {
@@ -15,7 +15,8 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   // replace userId with sessions userId
-  const { userId, drink, mixins_1, mixins_2, sugar_level, ice_level } = req.body
+  const { userId } = req.session
+  const { drink, mixins_1, mixins_2, sugar_level, ice_level } = req.body
   UserDrink.create(userId, drink, mixins_1, mixins_2, sugar_level, ice_level)
     .then(userDrink => {
       res.json(userDrink)
