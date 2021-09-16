@@ -3,7 +3,7 @@ const bcryptjs = require('bcryptjs')
 const router = express.Router()
 const User = require('../models/user')
 // const validateUser = require('../middlewares/validate_user')
-const {createSession } = require('../helpers/session_helper')
+const { createSession } = require('../helpers/session_helper')
 
 router.post('/', (req, res) => {
   User.findByEmail(req.body.email)
@@ -11,11 +11,13 @@ router.post('/', (req, res) => {
       if (user && bcryptjs.compareSync(req.body.password, user.password_digest)) {
         createSession(req, user)
         res.json(req.session)
+      } else {
+        res.status(422).json({ error: "Incorrect username or password" });
       }
     })
 })
 
-router.delete('/', (req, res) =>{ 
+router.delete('/', (req, res) => {
   req.session.destroy()
   res.json({})
 })
