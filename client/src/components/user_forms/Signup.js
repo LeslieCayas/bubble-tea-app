@@ -20,6 +20,7 @@ class SignUp extends Component {
       })
       .catch(error => {
         this.setState({ error: error.response.data.error })
+        console.log(error.response)
       })
   }
   render() {

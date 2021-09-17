@@ -9,6 +9,9 @@ router.post('/', validateUser, (req, res) => {
     .then(successResponse => {
       res.json(successResponse)
     })
+    .catch(err => {
+      res.json(err.response.data.error)
+    })
 })
 
 router.get('/', (req, res) => {

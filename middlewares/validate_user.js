@@ -18,7 +18,7 @@ function validateUser(req, res, next) {
 
   validatePassword(password)
 
-  next();
+  next()
 }
 
 module.exports = validateUser;
