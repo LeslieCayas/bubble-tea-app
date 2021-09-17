@@ -26,7 +26,7 @@ class SignUp extends Component {
   render() {
     return (
       <div id="login">
-        {this.state !== {} && <span id="errors">{this.state.error}</span>}
+        {this.state.error !== '' && <span id="errors">{this.state.error}</span>}
 
         <form id="signUp" onSubmit={this.signUp}>
           <input type="text" name="username" placeholder="Name" />

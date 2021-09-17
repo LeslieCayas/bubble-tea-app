@@ -15,17 +15,20 @@ class Login extends Component {
     const form = event.target
     const data = Object.fromEntries(new FormData(form))
     axios.post('/api/sessions', data)
-      .then(() => {
-        window.location = '/'
-      })
-      .catch(error => {
-        this.setState({ error: error.response.data.error })
+      .then(session => {
+        // window.location = '/'
+        if (session.data.error) {
+          this.setState({ error: session.data.error })
+        } else {
+          window.location = '/'
+
+        }
       })
   }
   render() {
     return (
       <div id="login">
-        {this.state !== {} && <span id="errors">
+        {this.state.error !== '' && <span id="errors">
           {this.state.error}</span>}
 
         <form id="login" onSubmit={this.loginUser}>
