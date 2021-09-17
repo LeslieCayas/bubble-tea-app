@@ -28,7 +28,7 @@ class SignUp extends Component {
         {this.state !== {} && <span id="errors">{this.state.error}</span>}
 
         <form id="signUp" onSubmit={this.signUp}>
-          <input type="text" name="name" placeholder="Name" />
+          <input type="text" name="username" placeholder="Name" />
           <input type="text" name="email" placeholder="Email" />
           <input type="password" name="password" placeholder="Password" />
           <input type="submit" value="Sign Up" />

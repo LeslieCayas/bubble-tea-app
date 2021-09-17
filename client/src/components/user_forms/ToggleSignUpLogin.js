@@ -20,7 +20,7 @@ class UserSignupLogin extends Component {
     return (
       <div id="signupLogin">
         {this.state.userLogin ? <Login /> : <Signup />}
-        <button onClick={this.handleClick}>Sign Up</button>
+        <button onClick={this.handleClick}>{this.state.userLogin ? "Sign Up": "Login"}</button>
       </div>
     )
   }
