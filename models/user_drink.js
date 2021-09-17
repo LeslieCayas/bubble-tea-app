@@ -25,7 +25,7 @@ const UserDrinks = {
   },
 
   updateUserDrinks(drink, mixins_1, mixins_2, sugar_level, ice_level, counter, id) {
-    sql = `
+    const sql = `
       UPDATE users_drinks
       SET drink = $1,
           mixins_1 = $2,
@@ -41,5 +41,18 @@ const UserDrinks = {
         return dbResponse.rows[0]
       })
   },
+
+  updateDrinkCounter(counter, id) {
+    const sql = `
+      UPDATE users_drinks
+      SET counter = $1
+      WHERE id = $2
+    `
+
+    return db.query(sql, [counter, id])
+    .then(dbResponse => {
+      return dbResponse.rows[0]
+    })
+  }
 }
 module.exports = UserDrinks
