@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react'
 import Navigation from './components/Navigation'
 import ToggleSignUpLogin from './components/user_forms/ToggleSignUpLogin'
 import UserDrinks from './components/drinks/UserDrinks'
+import CreateDrink from './components/drinks/CreateDrink'
 
 function App() { 
   return (
@@ -10,6 +11,7 @@ function App() {
       <Navigation />
       <ToggleSignUpLogin />
       <UserDrinks />
+      <CreateDrink />
     </div>
   );
 }

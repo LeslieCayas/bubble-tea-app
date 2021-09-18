@@ -16,12 +16,10 @@ class Login extends Component {
     const data = Object.fromEntries(new FormData(form))
     axios.post('/api/sessions', data)
       .then(session => {
-        // window.location = '/'
         if (session.data.error) {
           this.setState({ error: session.data.error })
         } else {
           window.location = '/'
-
         }
       })
   }
