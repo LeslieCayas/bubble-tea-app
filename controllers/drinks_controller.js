@@ -4,7 +4,7 @@ const Drink = require('../models/drink')
 
 // find drinks by store?
 // group drinks based on flavour, store, kj
-router.get('/', (req,res) => {
+router.get('/', (req, res) => {
   Drink.allDrinkData()
     .then(drinks => res.json(drinks))
 })

@@ -7,6 +7,7 @@ const session = require('express-session')
 
 const errorHandler = require('./middlewares/error_handler')
 const drinksController = require('./controllers/drinks_controller')
+const mixinsController = require('./controllers/mixins_controller')
 const userDrinksController = require('./controllers/user_drinks_controller')
 const usersController = require('./controllers/users_controller')
 const sessionsController = require('./controllers/session_controller')
@@ -39,5 +40,7 @@ app.get('/', (req, res) => {
 app.use('/api/sessions', sessionsController)
 app.use('/api/users', usersController)
 app.use('/api/drinks', drinksController)
+app.use('/api/mixins', mixinsController)
 app.use('/api/userDrinks', userDrinksController)
+
 app.use(errorHandler)
