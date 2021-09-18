@@ -1,6 +1,6 @@
-require('dotenv').config({path: __dirname+'/../.env'})
+require('dotenv').config({path: __dirname+'/../../.env'})
 const fs = require('fs')
-const db = require('./db')
+const db = require('../db')
 
 
 const fileString = fs.readFileSync('./BubbleTeaData.csv', 'utf-8')

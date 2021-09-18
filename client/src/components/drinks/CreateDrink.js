@@ -25,10 +25,15 @@ export default class CreateDrink extends Component {
           <select name="drink" id="">
             {/*map flavours from state*/}
             <option value="store"></option>
-
           </select>
 
-          <select name="mixins_1" id=""></select>
+          <select name="mixins_1" id="">
+            <option value="pearls">Pearls</option>
+            <option name="herbal jelly" id="">Herbal Jelly</option>
+            <option value="rainbow jelly">Rainbow Jelly</option>
+            <option value="aloe vera">Aloe Vera</option>
+            <option value="red bean">Red Bean</option>
+          </select>
           <select name="mixins_2" id=""></select>
           <select name="sugar_level" id=""></select>
           <select name="ice_level" id=""></select>

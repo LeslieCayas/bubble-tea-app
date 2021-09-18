@@ -12,7 +12,13 @@ CREATE TABLE bubble_tea_data(
   id SERIAL PRIMARY KEY,
   flavour TEXT,
   store TEXT,
-  kilojoules TEXT
+  kilojoules INTEGER
+);
+
+CREATE TABLE mixins_data(
+  id SERIAL PRIMARY KEY,
+  mixin TEXT,
+  kilojoules INTEGER
 );
 
 CREATE TABLE users_drinks(
