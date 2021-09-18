@@ -1,10 +1,14 @@
 import axios from "axios"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 // axios call to get all drinks
 // how component for the counter form
 // pass drink id as a prop for the conuter form component
 function UserDrinks() {
   const [userDrinks, setUserDrinks] = useState([])
+
+  useEffect(() => {
+    getDrinks()
+  }, [])
 
   const getDrinks = () => {
     axios.get('/api/userDrinks')
@@ -14,8 +18,6 @@ function UserDrinks() {
         setUserDrinks(drinksArr)
       })
   }
-
-  getDrinks()
 
   return (
     <div>
@@ -30,9 +32,6 @@ function UserDrinks() {
         )}
     </div>
   )
-
-
-  
 }
 
 export default UserDrinks
