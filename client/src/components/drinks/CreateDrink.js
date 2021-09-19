@@ -8,18 +8,14 @@ import { Component } from "react"
 class CreateDrink extends Component {
   state = {
     storeDrinks: [],
-    store: ''
+    store: '',
+    mixins: []
   }
-
-  // select store
-  // based on store make axios call to get drinks 
-  // store drinks in state
-  // map options
 
   componentDidMount() {
     this.getDrinkData()
+    this.getMixinData()
   }
-
 
   setStore = event => {
     const store = event.target.value
@@ -34,59 +30,67 @@ class CreateDrink extends Component {
       })
   }
 
+  getMixinData = () => {
+    axios.get('/api/mixins')
+      .then(response => {
+        this.setState({ mixins: response.data })
+      })
+  }
+
+  createDrink = event => {
+    event.preventDefault()
+    const form = event.target
+    const data = Object.fromEntries(new FormData(form))
+
+    axios.post('/api/userDrinks', data)
+      .then(() => {
+        window.location = '/'
+      })
+      .catch(error => {
+        this.setState({ error: error.response.data.error })
+      })
+  }
+
   render() {
     // array of objects
     const drinks = this.state.storeDrinks
-    // array of all drink flavour names
-    const allFlavours = drinks.map(drink => drink.flavour)
+    const mixins = this.state.mixins
     // array of drink objects based on store name
-    const storeDrinks = drinks.filter(drink => drink.store == this.state.store)
-    const storeFlavours = storeDrinks.map(drink => drink.flavour)
-    console.log(drinks)
-
-    console.log(storeDrinks)
-    console.log(storeFlavours)
-    let flavours
-    // const allDrinks = drinks.map(drink => {
-    //   return (
-    //     <option value="">{drink.flavour}</option>
-    //   )
-    // })
+    const storeDrinks = drinks.filter(drink => drink.store === this.state.store)
 
     return (
       <div id="createDrinkForm">
-        <form id="createDrink">
+        {this.state.error !== '' && <span id="errors">{this.state.error}</span>}
+
+        <form id="createDrink" onSubmit={this.createDrink}>
           <select name="store" onChange={this.setStore}>
             <option>Store</option>
             <option value="ShareTea" id="ShareTea">ShareTea</option>
             <option value="Gong cha" id="Gong cha">Gong cha</option>
             <option value="Chatime">Chatime</option>
           </select>
-          <select name="drink" id="">
-            {this.state.store == 'Store' ||  this.state.store == ''? allFlavours.map(flavour => <option value="">{flavour}</option>) : storeFlavours.map(flavour => <option value="">{flavour}</option>)}
-            <option value=""></option>
+          <select name="drink">
+            {this.state.store === 'Store' || this.state.store === '' ? drinks.map(drink => <option value={drink.flavour} key={drink.id}>{drink.flavour}</option>) : storeDrinks.map(drink => <option value={drink.flavour} key={drink.id}>{drink.flavour}</option>)}
           </select>
 
-          <select name="mixins_1" id="">
+          <select name="mixins_1">
             <option value="none">None</option>
-            {/* map mixins from state */}
-            <option value=""></option>
+            {mixins.map(mixin => <option value={mixin.mixin} key={mixin.id}>{mixin.mixin}</option>)}
           </select>
 
-          <select name="mixins_2" id="">
+          <select name="mixins_2">
             <option value="none">None</option>
-            {/* map mixins from state */}
-            <option value=""></option>
+            {mixins.map(mixin => <option value={mixin.mixin} key={mixin.id}>{mixin.mixin}</option>)}
           </select>
 
-          <select name="sugar_level" id="">
+          <select name="sugar_level">
             <option value="0%">0%</option>
             <option value="30%">30%</option>
             <option value="50%">50%</option>
             <option value="80%">80%</option>
             <option value="100%">100%</option>
           </select>
-          <select name="ice_level" id="">
+          <select name="ice_level">
             <option value="0%">0%</option>
             <option value="50%">50%</option>
             <option value="100%">100%</option>

@@ -2,7 +2,6 @@
   // if true, render login form and use login axios request (post to sessions api)
 // if button is clicked, set userLogin to false
   // if false, render sign up form and use signup axios request (post to users api)
-  import axios from "axios"
   import { Component } from "react"
   import Login from "./Login"
   import Signup from "./Signup"
