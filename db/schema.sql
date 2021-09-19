@@ -25,7 +25,7 @@ CREATE TABLE users_drinks(
   id SERIAL PRIMARY KEY,
   userId INTEGER,
   FOREIGN KEY(userId) REFERENCES users(id) ON DELETE CASCADE,
-  drink TEXT,
+  flavour TEXT,
   mixins_1 TEXT,
   mixins_2 TEXT,
   sugar_level TEXT,

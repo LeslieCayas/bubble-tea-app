@@ -69,7 +69,7 @@ class CreateDrink extends Component {
             <option value="Gong cha" id="Gong cha">Gong cha</option>
             <option value="Chatime">Chatime</option>
           </select>
-          <select name="drink">
+          <select name="flavour">
             {this.state.store === 'Store' || this.state.store === '' ? drinks.map(drink => <option value={drink.flavour} key={drink.id}>{drink.flavour}</option>) : storeDrinks.map(drink => <option value={drink.flavour} key={drink.id}>{drink.flavour}</option>)}
           </select>
 
