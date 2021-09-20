@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const UserDrink = require('../models/user_drink')
-
+const validateDrink = require('../middlewares/validate_drink') 
 router.get('/', (req, res) => {
   // replace userId with sessions userId
 
@@ -13,11 +13,11 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/', validateDrink, (req, res) => {
   // replace userId with sessions userId
   const { userId } = req.session
-  const { drink, mixins_1, mixins_2, sugar_level, ice_level } = req.body
-  UserDrink.create(userId, drink, mixins_1, mixins_2, sugar_level, ice_level)
+  const { flavour, mixins_1, mixins_2, sugar_level, ice_level } = req.body
+  UserDrink.create(userId, flavour, mixins_1, mixins_2, sugar_level, ice_level)
     .then(userDrink => {
       res.json(userDrink)
     })

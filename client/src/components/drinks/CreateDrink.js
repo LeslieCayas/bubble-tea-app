@@ -74,12 +74,12 @@ class CreateDrink extends Component {
           </select>
 
           <select name="mixins_1">
-            <option value="none">None</option>
+            <option value="None">None</option>
             {mixins.map(mixin => <option value={mixin.mixin} key={mixin.id}>{mixin.mixin}</option>)}
           </select>
 
           <select name="mixins_2">
-            <option value="none">None</option>
+            <option value="None">None</option>
             {mixins.map(mixin => <option value={mixin.mixin} key={mixin.id}>{mixin.mixin}</option>)}
           </select>
 

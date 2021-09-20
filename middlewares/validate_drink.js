@@ -1,10 +1,9 @@
 const validationError = require('./validation_error')
 const fs = require('fs')
-const fileString = fs.readFileSync('/home/lesliec/Desktop/Sei/project4/bubble-tea-app/db/drinkData/BubbleTeaData.csv', 'utf-8')
+const path = require('path')
 
 function drinkFlavours() {
-  // if any fields are empty throw error
-  // if
+  const fileString = fs.readFileSync(path.resolve(__dirname, "../db/drinkData/BubbleTeaData.csv"), "utf-8")
   const lines = fileString.split('\n')
   const drinkFlavours = lines.map(line => {
     const trimmedData = line.split('\r').join('')
@@ -17,7 +16,7 @@ function drinkFlavours() {
 }
 
 function getAllMixins() {
-  const fileString = fs.readFileSync('/home/lesliec/Desktop/Sei/project4/bubble-tea-app/db/mixinsData/MixinsData.csv', 'utf-8')
+  const fileString = fs.readFileSync(path.resolve(__dirname, "../db/mixinsData/MixinsData.csv"), "utf-8")
   const lines = fileString.split('\n')
   const allMixins = lines.map(line => {
     const trimmedData = line.split('\r').join('')
@@ -25,7 +24,7 @@ function getAllMixins() {
     const mixin = mixinData[0]
     return mixin
   })
-  const validMixins = [...allMixins, "none"]
+  const validMixins = [...allMixins, "None"]
 
   return validMixins
 }
@@ -37,29 +36,35 @@ function validateDrink(req, res, next) {
   const allIceLevels = ["0%", "50%", "100%"]
 
   const { flavour, mixins_1, mixins_2, sugar_level, ice_level } = req.body
-
-  const foundFlavour = allDrinkFlavours.find(drink => drink.flavour === flavour)
-  const foundMixins = allMixins.find(mixin => mixin.mixin === mixins_1 || mixins_2)
+  const { userId } = req.session
+  const foundFlavour = allDrinkFlavours.find(drink => drink === flavour)
+  const foundMixins1 = allMixins.find(mixin => mixin === mixins_1)
+  const foundMixins2 = allMixins.find(mixin => mixin === mixins_2)
   const foundSugarLevel = allSugarLevels.find(level => level === sugar_level)
   const foundIceLevel = allIceLevels.find(level => level === ice_level)
-
+  
   if (foundFlavour === undefined) {
     throw validationError("Invalid Drink Input")
-  }
 
-  if (foundMixins.length < 2 || foundMixins.length === undefined) {
+  } else if (foundMixins1 === undefined) {
     throw validationError("Invalid Mixin Input")
-  }
 
-  if (foundSugarLevel.length === undefined) {
+  } else if (foundMixins2 === undefined) {
+    throw validationError("Invalid Mixin Input")
+
+  } else if (foundSugarLevel === undefined) {
     throw validationError("Invalid Sugar Level Input")
-  }
 
-  if (foundIceLevel.length === undefined) {
+  } else if (foundIceLevel === undefined) {
     throw validationError("Invalid Ice Level Input")
+
+  } else if (!userId) {
+    throw validationError("Please Log In or Sign Up")
   }
 
   next()
 }
 
 module.exports = validateDrink
+
+// console.log(getAllMixins())

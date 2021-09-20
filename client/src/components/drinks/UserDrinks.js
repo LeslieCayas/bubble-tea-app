@@ -16,6 +16,7 @@ function UserDrinks() {
         console.log(drinks.data)
         const drinksArr = drinks.data
         setUserDrinks(drinksArr)
+        console.log(drinksArr)
       })
   }
 
@@ -23,7 +24,7 @@ function UserDrinks() {
     <div>
       {userDrinks.map(drink => 
         <div>
-          {drink.drink}
+          {drink.flavour}
           {drink.mixins_1}
           {drink.mixins_2}
           {drink.sugar_level}
