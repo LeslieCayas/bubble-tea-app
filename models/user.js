@@ -24,6 +24,17 @@ const User = {
       .then(dbResponse => {
         return dbResponse.rows[0]
       })
+  },
+
+  findByName(id) {
+    const sql = `
+      SELECT username FROM users
+      WHERE id = $1
+    `
+    return db.query(sql, [id])
+      .then(dbResponse => {
+        return dbResponse.rows[0]
+      })
   }
 }
 

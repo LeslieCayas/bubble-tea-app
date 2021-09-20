@@ -10,8 +10,8 @@ function App() {
     <div className="App">
       <Navigation />
       <ToggleSignUpLogin />
-      <UserDrinks />
       <CreateDrink />
+      <UserDrinks />
     </div>
   );
 }

@@ -8,7 +8,7 @@ import DeleteDrink from './DeleteDrink'
 // pass drink id as a prop for the conuter form component
 function UserDrinks() {
   const [userDrinks, setUserDrinks] = useState([])
-  const [updateForm, setUpdateForm] = useState(false)
+
   useEffect(() => {
     getDrinks()
   }, [])
@@ -23,15 +23,6 @@ function UserDrinks() {
       })
   }
 
-  const handleClick = () => {
-    setUpdateForm(!updateForm)
-  }
-
-  const deleteDrink = event => {
-    console.log(event)
-
-  }
-
   return (
     <Router>
       <div>
@@ -44,13 +35,11 @@ function UserDrinks() {
                 <li>Mixin: {drink.mixins_2}</li>
                 <li>Sugar Level: {drink.sugar_level}</li>
                 <li>Ice Level: {drink.ice_level}</li>
-                {/* <button onClick={handleClick}>Update Drink</button> */}
                 <Link to="/updateDrink">Update Drink</Link>
                   <Route path="/updateDrink">
                     <UpdateDrink drinkId={drink.id} />
                   </Route>
                 <DeleteDrink drinkId={drink.id}/>
-                {/* {updateForm && <UpdateDrink drinkId={drink.id}/>} */}
               </ul>
             </div>
           )

@@ -16,6 +16,17 @@ router.post('/', (req, res) => {
     })
 })
 
+router.get('/', (req, res) => {
+  User.findByName(req.session.userId)
+    .then(userInfo => {
+      if (userInfo == undefined) {
+        res.json({ error: "Please login or sign up" })
+      } else {
+        res.json({ userName: userInfo.username })
+      }
+    })
+})
+
 router.delete('/', (req, res) => {
   req.session.destroy()
   res.json({})
