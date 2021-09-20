@@ -1,4 +1,4 @@
-const validationError = require('./validation_error')
+const validationError = require('../validation_error')
 const bcryptjs = require('bcryptjs')
 
 function validateUser(req, res, next) {

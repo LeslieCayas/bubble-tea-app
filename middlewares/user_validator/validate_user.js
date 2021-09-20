@@ -1,5 +1,5 @@
 const validatePassword = require('./validate_password')
-const validationError = require('./validation_error')
+const validationError = require('../validation_error')
 
 function validateUser(req, res, next) {
   const username = req.body.username

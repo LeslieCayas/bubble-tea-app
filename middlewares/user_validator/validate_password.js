@@ -1,4 +1,4 @@
-const validationError = require('./validation_error')
+const validationError = require('../validation_error')
 
 function validatePassword(password) {
   if (password.length < 8) {

@@ -1,4 +1,4 @@
-const validationError = require('./validation_error')
+const validationError = require('../validation_error')
 const fs = require('fs')
 const path = require('path')
 

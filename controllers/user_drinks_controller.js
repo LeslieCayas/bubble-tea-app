@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const UserDrink = require('../models/user_drink')
-const validateDrink = require('../middlewares/validate_drink') 
+const validateDrink = require('../middlewares/drink_validator/validate_drink') 
 router.get('/', (req, res) => {
   // replace userId with sessions userId
 
