@@ -8,6 +8,7 @@ function Navigation() {
           <li>Home</li>
           <li>About</li>
           <li>Your Drinks</li>
+          <li>Your Drinks</li>
           <li>Login</li>
         </ul>
       </nav>

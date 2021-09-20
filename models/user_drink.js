@@ -24,10 +24,10 @@ const UserDrinks = {
       })
   },
 
-  updateUserDrinks(drink, mixins_1, mixins_2, sugar_level, ice_level, counter, id) {
+  updateUserDrinks(flavour, mixins_1, mixins_2, sugar_level, ice_level, counter, id) {
     const sql = `
       UPDATE users_drinks
-      SET drink = $1,
+      SET flavour = $1,
           mixins_1 = $2,
           mixins_2 = $3,
           sugar_level = $4,
@@ -36,7 +36,7 @@ const UserDrinks = {
       WHERE id = $7
     `
 
-    return db.query(sql, [drink, mixins_1, mixins_2, sugar_level, ice_level, counter, id])
+    return db.query(sql, [flavour, mixins_1, mixins_2, sugar_level, ice_level, counter, id])
       .then(dbResponse => {
         return dbResponse.rows[0]
       })
@@ -50,9 +50,20 @@ const UserDrinks = {
     `
 
     return db.query(sql, [counter, id])
-    .then(dbResponse => {
-      return dbResponse.rows[0]
-    })
+      .then(dbResponse => {
+        return dbResponse.rows[0]
+      })
+  },
+
+  deleteDrink(id) {
+    const sql = `
+      DELETE FROM users_drinks
+      WHERE id = $1
+    `
+    return db.query(sql, [id])
+      .then(() => {
+        return "Drink Deleted Successfully"
+      })
   }
 }
 module.exports = UserDrinks

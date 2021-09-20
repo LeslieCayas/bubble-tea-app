@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 
 function drinkFlavours() {
-  const fileString = fs.readFileSync(path.resolve(__dirname, "../db/drinkData/BubbleTeaData.csv"), "utf-8")
+  const fileString = fs.readFileSync(path.resolve(__dirname, "../../db/drinkData/BubbleTeaData.csv"), "utf-8")
   const lines = fileString.split('\n')
   const drinkFlavours = lines.map(line => {
     const trimmedData = line.split('\r').join('')
@@ -16,7 +16,7 @@ function drinkFlavours() {
 }
 
 function getAllMixins() {
-  const fileString = fs.readFileSync(path.resolve(__dirname, "../db/mixinsData/MixinsData.csv"), "utf-8")
+  const fileString = fs.readFileSync(path.resolve(__dirname, "../../db/mixinsData/MixinsData.csv"), "utf-8")
   const lines = fileString.split('\n')
   const allMixins = lines.map(line => {
     const trimmedData = line.split('\r').join('')
