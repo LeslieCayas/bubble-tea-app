@@ -44,7 +44,7 @@ class CreateDrink extends Component {
 
     axios.post('/api/userDrinks', data)
       .then(() => {
-        window.location = '/'
+        window.location = '/your-drinks'
       })
       .catch(error => {
         this.setState({ error: error.response.data.error })

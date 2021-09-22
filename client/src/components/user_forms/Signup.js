@@ -15,8 +15,12 @@ class SignUp extends Component {
     const form = event.target
     const data = Object.fromEntries(new FormData(form))
     axios.post('/api/users', data)
-      .then(() => {
-        window.location = '/'
+      .then(response => {
+        if (response.data.error) {
+          this.setState({ error: response.data.error })
+        } else {
+          window.location = '/your-drinks'
+        }
       })
       .catch(error => {
         this.setState({ error: error.response.data.error })

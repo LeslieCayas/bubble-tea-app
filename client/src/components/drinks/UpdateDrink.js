@@ -40,7 +40,7 @@ class UpdateDrink extends Component {
     const id = this.props.drinkId
     axios.patch(`/api/userDrinks/updateDrink/${id}`, data)
       .then(() => {
-        window.location = '/'
+        window.location = '/your-drinks'
       })
       .catch(error => {
         this.setState({ error: error.response.data.error })

@@ -5,13 +5,22 @@ const User = require('../models/user')
 
 router.post('/', validateUser, (req, res) => {
   const { username, email, password } = req.body
-  User.create(username, email, password)
-    .then(successResponse => {
-      res.json(successResponse)
+
+  User.findByEmail(email)
+    .then(user => {
+      if (user) {
+        res.json({ error: "An account has been made with this email" })
+      } else if (user === undefined) {
+        User.create(username, email, password)
+          .then(successResponse => {
+            res.json(successResponse)
+          })
+          .catch(err => {
+            res.json(err.response.data.error)
+          })
+      }
     })
-    .catch(err => {
-      res.json(err.response.data.error)
-    })
+
 })
 
 router.get('/', (req, res) => {

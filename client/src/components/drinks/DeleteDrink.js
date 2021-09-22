@@ -9,7 +9,7 @@ function DeleteDrink(props) {
     axios.delete(`api/userDrinks/${id}`)
       .then(() => {
         event.target.closest('.userDrink').remove()
-        window.location = '/'
+        window.location = '/your-drinks'
       })
   }
 

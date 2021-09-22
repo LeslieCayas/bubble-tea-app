@@ -19,7 +19,7 @@ class Login extends Component {
         if (session.data.error) {
           this.setState({ error: session.data.error })
         } else {
-          window.location = '/'
+          window.location = '/your-drinks'
         }
       })
   }
