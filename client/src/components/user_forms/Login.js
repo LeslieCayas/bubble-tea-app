@@ -30,7 +30,7 @@ class Login extends Component {
           {this.state.error}</span>}
 
         <form id="login" onSubmit={this.loginUser}>
-          <input type="text" name="email" placeholder="Email" />
+          <input type="email" name="email" placeholder="Email" />
           <input type="password" name="password" placeholder="Password" />
           <input type="submit" value="Log in" />
         </form>
