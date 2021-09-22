@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import ToggleSignUpLogin from './user_forms/ToggleSignUpLogin'
 import UserDrinks from './drinks/UserDrinks'
 import CreateDrink from './drinks/CreateDrink'
+import Home from './Home'
+
 import React from 'react'
 
 function Navigation() {
@@ -15,12 +17,14 @@ function Navigation() {
           <Link to='/create-drinks'>Create Drinks</Link>
           <Link to='/login-signup'>Login/Signup</Link>
 
-
-            <Route path='/'></Route>
+          <Switch>
+            <Route exact path='/'><Home /></Route>
             <Route path='/about'></Route>
-            <Route path='/your-drinks'><UserDrinks/></Route>
-            <Route path='/create-drinks'><CreateDrink/></Route>
-            <Route path='/login-signup'><ToggleSignUpLogin/></Route>
+            <Route path='/your-drinks'><UserDrinks /></Route>
+            <Route path='/create-drinks'><CreateDrink /></Route>
+            <Route path='/login-signup'><ToggleSignUpLogin /></Route>
+          </Switch>
+
 
         </nav>
       </Router>

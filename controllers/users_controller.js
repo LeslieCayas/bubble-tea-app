@@ -8,9 +8,7 @@ router.post('/', validateUser, (req, res) => {
 
   User.findByEmail(email)
     .then(user => {
-      if (user) {
-        res.json({ error: "An account has been made with this email" })
-      } else if (user === undefined) {
+      if (user === undefined) {
         User.create(username, email, password)
           .then(successResponse => {
             res.json(successResponse)
@@ -18,6 +16,8 @@ router.post('/', validateUser, (req, res) => {
           .catch(err => {
             res.json(err.response.data.error)
           })
+      } else {
+        res.json({ error: "An account has been made with this email" })
       }
     })
 
