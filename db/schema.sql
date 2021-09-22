@@ -30,5 +30,5 @@ CREATE TABLE users_drinks(
   mixins_2 TEXT,
   sugar_level TEXT,
   ice_level TEXT,
-  counter INTEGER
+  counter INTEGER DEFAULT 0
 );

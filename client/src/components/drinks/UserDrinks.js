@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import UpdateDrink from './UpdateDrink'
 import DeleteDrink from './DeleteDrink'
+import DrinkCounter from './DrinkCounter'
 // axios call to get all drinks
 // how component for the counter form
 // pass drink id as a prop for the conuter form component
@@ -10,16 +11,14 @@ function UserDrinks() {
   const [userDrinks, setUserDrinks] = useState([])
 
   useEffect(() => {
-    getDrinks()
+    getUserDrinks()
   }, [])
 
-  const getDrinks = () => {
+  const getUserDrinks = () => {
     axios.get('/api/userDrinks')
       .then(drinks => {
-        console.log(drinks.data)
         const drinksArr = drinks.data
         setUserDrinks(drinksArr)
-        console.log(drinksArr)
       })
   }
 
@@ -40,6 +39,7 @@ function UserDrinks() {
                     <UpdateDrink drinkId={drink.id} />
                   </Route>
                 <DeleteDrink drinkId={drink.id}/>
+                <DrinkCounter drinkCount={drink.counter} drinkId={drink.id}/>
               </ul>
             </div>
           )

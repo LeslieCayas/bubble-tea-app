@@ -38,7 +38,7 @@ class UpdateDrink extends Component {
     const form = event.target
     const data = Object.fromEntries(new FormData(form))
     const id = this.props.drinkId
-    axios.patch(`/api/userDrinks/${id}`, data)
+    axios.patch(`/api/userDrinks/updateDrink/${id}`, data)
       .then(() => {
         window.location = '/'
       })
@@ -86,6 +86,7 @@ class UpdateDrink extends Component {
             <option value="80%">80%</option>
             <option value="100%">100%</option>
           </select>
+          
           <select name="ice_level">
             <option value="0%">0%</option>
             <option value="50%">50%</option>

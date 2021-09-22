@@ -42,14 +42,14 @@ const UserDrinks = {
       })
   },
 
-  updateDrinkCounter(counter, id) {
+  updateDrinkCounter(count, id) {
     const sql = `
       UPDATE users_drinks
       SET counter = $1
       WHERE id = $2
     `
 
-    return db.query(sql, [counter, id])
+    return db.query(sql, [count, id])
       .then(dbResponse => {
         return dbResponse.rows[0]
       })

@@ -23,7 +23,7 @@ router.post('/', validateDrink, (req, res) => {
     })
 })
 
-router.patch('/:id', (req, res) => {
+router.patch('/updateDrink/:id', (req, res) => {
   // update counter with state?
   const { flavour, mixins_1, mixins_2, sugar_level, ice_level, counter } = req.body
   const { id } = req.params
@@ -33,8 +33,17 @@ router.patch('/:id', (req, res) => {
     })
 })
 
+router.patch('/updateCounter/:id', (req, res) => {
+  const { id } = req.params
+  const { count } = req.body
+  UserDrink.updateDrinkCounter(count, id)
+    .then(updateInfo => {
+      res.json(updateInfo)
+    })
+})
+
 router.delete('/:id', (req, res) => {
-  const {id} = req.params
+  const { id } = req.params
 
   UserDrink.deleteDrink(id)
     .then(response => {

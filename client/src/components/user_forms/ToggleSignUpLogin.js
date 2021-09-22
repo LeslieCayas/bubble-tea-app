@@ -45,7 +45,7 @@ class UserSignupLogin extends Component {
   render() {
     return (
       <div id="signupLogin">
-        <span>Welcome {this.state.userName !== undefined && this.state.userName}</span>
+        <span>{this.state.userName !== undefined ? `Welcome, ${this.state.userName}` : `Welcome to Bubble Tea App!`}</span>
         {this.state.userName && <button onClick={this.logOut}>Log Out</button>}
         {this.state.userLogin ? <Login /> : <Signup />}
         <button onClick={this.handleClick}>{this.state.userLogin ? "Sign Up" : "Login"}</button>
