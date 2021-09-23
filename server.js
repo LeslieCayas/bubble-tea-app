@@ -32,9 +32,6 @@ app.use(express.static('./client/build'))
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 })
-// app.get('/api/test', (req, res) => {
-//   res.send({ set: "true" })
-// })
 
 app.use('/api/sessions', sessionsController)
 // app.use('/api/stores', storesController)
@@ -44,4 +41,3 @@ app.use('/api/mixins', mixinsController)
 app.use('/api/userDrinks', userDrinksController)
 
 app.use(errorHandler)
-console.log(process.env.HERE_MAPS_KEY)
