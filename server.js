@@ -11,7 +11,7 @@ const mixinsController = require('./controllers/mixins_controller')
 const userDrinksController = require('./controllers/user_drinks_controller')
 const usersController = require('./controllers/users_controller')
 const sessionsController = require('./controllers/session_controller')
-const storeController = require('./controllers/stores_controller')
+// const storeController = require('./controllers/stores_controller')
 
 const sessionConfig = {
   secret: process.env.SESSION_SECRET,
@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 // })
 
 app.use('/api/sessions', sessionsController)
-app.use('/api/stores', storesController)
+// app.use('/api/stores', storesController)
 app.use('/api/users', usersController)
 app.use('/api/drinks', drinksController)
 app.use('/api/mixins', mixinsController)

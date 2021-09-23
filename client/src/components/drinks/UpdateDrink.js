@@ -5,12 +5,12 @@ class UpdateDrink extends Component {
   state = {
     storeDrinks: [],
     store: '',
-    mixins: []
+    mixins: this.props.mixinsData
   }
 
   componentDidMount() {
     this.getDrinkData()
-    this.getMixinData()
+    // this.getMixinData()
   }
 
   setStore = event => {
@@ -23,13 +23,6 @@ class UpdateDrink extends Component {
     axios.get('/api/drinks')
       .then(response => {
         this.setState({ storeDrinks: response.data })
-      })
-  }
-
-  getMixinData = () => {
-    axios.get('/api/mixins')
-      .then(response => {
-        this.setState({ mixins: response.data })
       })
   }
 

@@ -9,6 +9,8 @@ import React from 'react'
 function Navigation() {
   return (
     <div id="navigation">
+      <h1>T(EA)racker</h1>
+
       <Router>
         <nav>
           <Link to='/'>Home</Link>
@@ -16,17 +18,15 @@ function Navigation() {
           <Link to='/your-drinks'>Your Drinks</Link>
           <Link to='/create-drinks'>Create Drinks</Link>
           <Link to='/login-signup'>Login/Signup</Link>
-
-          <Switch>
-            <Route exact path='/'><Home /></Route>
-            <Route path='/about'></Route>
-            <Route path='/your-drinks'><UserDrinks /></Route>
-            <Route path='/create-drinks'><CreateDrink /></Route>
-            <Route path='/login-signup'><ToggleSignUpLogin /></Route>
-          </Switch>
-
-
         </nav>
+
+        <Switch>
+          <Route exact path='/'><Home /></Route>
+          <Route path='/about'></Route>
+          <Route path='/your-drinks'><UserDrinks /></Route>
+          <Route path='/create-drinks'><CreateDrink /></Route>
+          <Route path='/login-signup'><ToggleSignUpLogin /></Route>
+        </Switch>
       </Router>
 
     </div>

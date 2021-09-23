@@ -1,13 +1,12 @@
-import './App.css'
+import './css/App.scss'
 import Navigation from './components/Navigation'
-import StoreLocator from './components/store_locator/StoreLocator'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   
   return (
       <div className="App">
         <Navigation />
-        <StoreLocator />
       </div>
   );
 }

@@ -1,45 +1,56 @@
 import axios from "axios"
-import { useState, useEffect } from "react"
+import { useState, useEffect, setState } from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import UpdateDrink from './UpdateDrink'
 import DeleteDrink from './DeleteDrink'
 import DrinkCounter from './DrinkCounter'
-// axios call to get all drinks
-// how component for the counter form
-// pass drink id as a prop for the conuter form component
+import AddKilojoules from './AddKilojoules'
+
 function UserDrinks() {
   const [userDrinks, setUserDrinks] = useState([])
+  const [mixinsData, setMixinsData] = useState([])
+  const [drinksData, setDrinksData] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    getUserDrinks()
-  }, [])
+    Promise.all([
+      axios.get('/api/userDrinks'),
+      axios.get('/api/mixins'),
+      axios.get('/api/drinks')
+    ]).then(([userDrinks, mixinData, drinksData]) => {
+      setUserDrinks(userDrinks.data)
+      setMixinsData(mixinData.data)
+      setDrinksData(drinksData.data)
+      setLoading(false)
+    }) 
 
-  const getUserDrinks = () => {
-    axios.get('/api/userDrinks')
-      .then(drinks => {
-        const drinksArr = drinks.data
-        setUserDrinks(drinksArr)
-      })
-  }
+  }, [])
 
   return (
     <Router>
       <div>
-        {userDrinks.map(drink => {
+        {loading ? `loading` : userDrinks.map(drink => {
           return (
             <div key={drink.id} className="userDrink">
               <ul>
-                <li>Flavour: {drink.flavour}</li>
-                <li>Mixin: {drink.mixins_1}</li>
-                <li>Mixin: {drink.mixins_2}</li>
-                <li>Sugar Level: {drink.sugar_level}</li>
-                <li>Ice Level: {drink.ice_level}</li>
-                <Link to="/updateDrink">Update Drink</Link>
+                <h2>{drink.flavour}</h2>
+                <li><span className="drinkFeature">Mixin: </span>{drink.mixins_1}</li>
+                <li><span className="drinkFeature">Mixin: </span>{drink.mixins_2}</li>
+                <li><span className="drinkFeature">Sugar Level: </span>{drink.sugar_level}</li>
+                <li><span className="drinkFeature">Ice Level: </span>{drink.ice_level}</li>
+                <AddKilojoules flavour={drink.flavour} mixinOne={drink.mixins_1} mixinTwo={drink.mixins_2} allFlavours={drinksData} allMixins={mixinsData} />
+
+                <DrinkCounter drinkCount={drink.counter} drinkId={drink.id} />
+
+                <div id="drinkControls">
+                  <Link to="/updateDrink">Update Drink</Link>
+
                   <Route path="/updateDrink">
-                    <UpdateDrink drinkId={drink.id} />
+                    <UpdateDrink drinkId={drink.id} mixinsData={mixinsData} />
                   </Route>
-                <DeleteDrink drinkId={drink.id}/>
-                <DrinkCounter drinkCount={drink.counter} drinkId={drink.id}/>
+
+                  <DeleteDrink drinkId={drink.id} />
+                </div>
               </ul>
             </div>
           )

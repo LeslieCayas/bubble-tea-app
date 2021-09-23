@@ -28,7 +28,7 @@ function DrinkCounter(props) {
     <div className="drinkCounter">
 
       <form onSubmit={updateCount}>
-        <button onClick={changeCount} value="-" type="button">-</button>{drinkCount}<button onClick={changeCount} value="+" type="button">+</button>
+        <button onClick={changeCount} value="-" type="button">-</button> {drinkCount} <button onClick={changeCount} value="+" type="button">+</button>
 
         <input type="submit" value="Change Count" />
 

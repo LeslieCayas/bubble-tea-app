@@ -1,7 +1,7 @@
 function Home() {
   return (
     <div id="home">
-      <h1>Tea Time Tracker</h1>
+      <h1>T(EA)racker</h1>
     </div>
   )
 }
