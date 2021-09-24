@@ -10,17 +10,20 @@ function UserDrinks() {
   const [userDrinks, setUserDrinks] = useState([])
   const [mixinsData, setMixinsData] = useState([])
   const [drinksData, setDrinksData] = useState([])
+  const [sessionsData, setSessionsData] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     Promise.all([
       axios.get('/api/userDrinks'),
       axios.get('/api/mixins'),
-      axios.get('/api/drinks')
-    ]).then(([userDrinks, mixinData, drinksData]) => {
+      axios.get('/api/drinks'),
+      axios.get('/api/sessions')
+    ]).then(([userDrinks, mixinData, drinksData, sessionsData]) => {
       setUserDrinks(userDrinks.data)
       setMixinsData(mixinData.data)
       setDrinksData(drinksData.data)
+      setSessionsData(sessionsData.data)
       setLoading(false)
     }) 
 
@@ -39,7 +42,6 @@ function UserDrinks() {
                 <li><span className="drinkFeature">Sugar Level: </span>{drink.sugar_level}</li>
                 <li><span className="drinkFeature">Ice Level: </span>{drink.ice_level}</li>
                 <AddKilojoules flavour={drink.flavour} mixinOne={drink.mixins_1} mixinTwo={drink.mixins_2} allFlavours={drinksData} allMixins={mixinsData} />
-
                 <DrinkCounter drinkCount={drink.counter} drinkId={drink.id} />
 
                 <div id="drinkControls">
@@ -50,6 +52,7 @@ function UserDrinks() {
                   </Route>
 
                   <DeleteDrink drinkId={drink.id} />
+
                 </div>
               </ul>
             </div>

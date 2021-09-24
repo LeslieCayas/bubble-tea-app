@@ -1,12 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
+
+$red: #dd5653;
+$sage: #bddbc5;
+$beige: #F2E2CE;
+$aqua: #94D7CD;
+$light-orange: #f28f38;
+$dark-orange:#d95525;
+$rose: #DB978E;
+$dark-green: #697322;
+
+
 
 #navigation{
-  display: inline-block;
-  text-align: center;
   width: 100%;
-  nav {
+  nav{
     display: grid;
-    grid-template-columns: repeat(5, 1fr)
+    padding-top: 1em;
+    padding-left: 3em;
+    padding-bottom: 1em;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    background-color: $beige;
+    column-gap: 2em;
+    h1 {
+      font-family: 'Calistoga', cursive;
+      font-size: 2.5em;
+      font-weight: lighter;
+      color: white;
+      text-shadow: 4px 3px 1px $dark-green;
+      margin: 0;
+    }
+    .navLinks {
+      a{
+        text-decoration:none;
+        color: $dark-green;
+        font-weight: bold;
+        margin-left: 3em;
+        padding: 7px 10px;
+        transition: 0.3s;
+      }
+      a:hover{
+        color: #f0f0f0;
+        background-color: $rose;
+        border-radius: 10px;
+      }
+      #login-signup {
+        background-color: $red;
+        color: #f0f0f0;
+        border-radius: 10px;
+        transition: 0.3s;
+      }
+      #login-signup:hover {
+        opacity: 0.6;
+      }
+    }
   }
+
 }
 
 .userDrink {
@@ -20,5 +69,5 @@
   margin: 3em 0;
 }
 
-@import '~bootstrap/scss/bootstrap.scss';
+// @import '~bootstrap/scss/bootstrap.scss';
 

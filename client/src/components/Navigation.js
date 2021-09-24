@@ -9,15 +9,16 @@ import React from 'react'
 function Navigation() {
   return (
     <div id="navigation">
-      <h1>T(EA)racker</h1>
-
       <Router>
         <nav>
-          <Link to='/'>Home</Link>
-          <Link to='/about'>About</Link>
-          <Link to='/your-drinks'>Your Drinks</Link>
-          <Link to='/create-drinks'>Create Drinks</Link>
-          <Link to='/login-signup'>Login/Signup</Link>
+          <h1>T(EA)racker</h1>
+          <div className="navLinks">
+            <Link to='/'>Home</Link>
+            <Link to='/about'>About</Link>
+            <Link to='/your-drinks'>Your Drinks</Link>
+            <Link to='/create-drinks'>Create Drinks</Link>
+            <Link id='login-signup'to='/login-signup'>Login | Signup</Link>
+          </div>
         </nav>
 
         <Switch>
