@@ -10,11 +10,22 @@ $dark-orange:#d95525;
 $rose: #DB978E;
 $dark-green: #697322;
 
+#drinksList {
+  h1 {
+    margin-left: 10%;
+    color: $dark-green;
+  }
+  span#username {
+    color: $red;
+  }
+}
 #allUserDrinks {
-  display: flex;
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content:center;
   gap: 2em;
+  width: 60%;
+  margin: 0 auto;
   h2 {
     color: $rose;
   }
@@ -22,8 +33,10 @@ $dark-green: #697322;
     padding-bottom: 0.5em;
   }
   .userDrink {
+    width: 100%;
     table {
       table-layout: fixed;
+      margin: 0 auto;
     }
     span.drinkFeature {
       font-weight: 550;
@@ -38,6 +51,17 @@ $dark-green: #697322;
   }
   #drinkControls {
     text-align: center;
+  }
+  .userDrink {
+    padding: 2%;
+    border: 1px solid $dark-beige;
+    border-radius: 2%;
+    transition: 0.3s;
+    background-color: #fdfdfd;
+  }
+  .userDrink:hover {
+    box-shadow: 5px 5px $beige;
+
   }
 }
 

@@ -5,6 +5,8 @@ import CreateDrink from './drinks/CreateDrink'
 import Home from './Home'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import '../css/Nav.scss'
+
 
 function Navigation() {
   const [sessionData, setSessionData] = useState([])

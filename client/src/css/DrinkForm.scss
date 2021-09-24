@@ -1,0 +1,47 @@
+$red: #dd5653;
+$sage: #bddbc5;
+$beige: #F2E2CE;
+$dark-beige: #e7d4bd;
+$aqua: #94D7CD;
+$light-orange: #f28f38;
+$dark-orange:#d95525;
+$rose: #DB978E;
+$dark-green: #697322;
+$black: #282828;
+
+
+#createDrinkForm{
+  display: grid;
+  grid-template-columns: 40% 60%;
+  width: 70%;
+  margin: 0 auto;
+  img {
+    height: 30%;
+  }
+  form#createDrink {
+    width: 100%;
+    text-align: center;
+    margin-top: 20%;
+    div {
+      margin-bottom: 3%;
+    }
+    label {
+      font-weight: 500;
+      font-size: 1.1em;
+      color: $red;
+    }
+    select {
+      width: 70%;
+      padding: 1%;
+      font-size: 1em;
+      margin-top: 1%;
+      margin-bottom: 3%;
+      color: $black;
+    }
+    input[type=submit] {
+      font-size: 1em;
+      padding: 2%;
+    }
+  }
+  
+}

@@ -57,21 +57,21 @@ class UpdateDrink extends Component {
             <option value="Gong cha" id="Gong cha">Gong cha</option>
             <option value="Chatime">Chatime</option>
           </select>
-
+          <br />
           <select name="flavour">
             {this.state.store === 'Store' || this.state.store === '' ? drinks.map(drink => <option value={drink.flavour} key={drink.id}>{drink.flavour}</option>) : storeDrinks.map(drink => <option value={drink.flavour} key={drink.id}>{drink.flavour}</option>)}
           </select>
-
+          <br />
           <select name="mixins_1">
             <option value="None">None</option>
             {mixins.map(mixin => <option value={mixin.mixin} key={mixin.id}>{mixin.mixin}</option>)}
           </select>
-
+          <br />
           <select name="mixins_2">
             <option value="None">None</option>
             {mixins.map(mixin => <option value={mixin.mixin} key={mixin.id}>{mixin.mixin}</option>)}
           </select>
-
+          <br />
           <select name="sugar_level">
             <option value="0%">0%</option>
             <option value="30%">30%</option>
@@ -79,14 +79,14 @@ class UpdateDrink extends Component {
             <option value="80%">80%</option>
             <option value="100%">100%</option>
           </select>
-          
+          <br />
           <select name="ice_level">
             <option value="0%">0%</option>
             <option value="50%">50%</option>
             <option value="100%">100%</option>
           </select>
-
-          <input type="submit" value="Update" />
+          <br />
+          <input type="submit" value="Submit" />
         </form>
       </div>
     )

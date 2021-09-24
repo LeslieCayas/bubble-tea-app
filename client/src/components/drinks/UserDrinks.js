@@ -11,6 +11,7 @@ function UserDrinks() {
   const [userDrinks, setUserDrinks] = useState([])
   const [mixinsData, setMixinsData] = useState([])
   const [drinksData, setDrinksData] = useState([])
+  const [sessionData, setSessionData] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -18,11 +19,13 @@ function UserDrinks() {
       axios.get('/api/userDrinks'),
       axios.get('/api/mixins'),
       axios.get('/api/drinks'),
+      axios.get('/api/sessions')
 
-    ]).then(([userDrinks, mixinData, drinksData]) => {
+    ]).then(([userDrinks, mixinData, drinksData, sessionData]) => {
       setUserDrinks(userDrinks.data)
       setMixinsData(mixinData.data)
       setDrinksData(drinksData.data)
+      setSessionData(sessionData.data)
       setLoading(false)
     })
 
@@ -30,82 +33,86 @@ function UserDrinks() {
 
   return (
 
-    <div id="allUserDrinks">
-      {loading ? `loading` : userDrinks.map(drink => {
-        return (
-          <div className="userDrink" key={drink.id}>
-            <table className="userDrinkInfo">
-              <thead>
-                <tr>
-                  <td colSpan="2">
-                    <h2>{drink.flavour}</h2>
-                  </td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <span className="drinkFeature">Mixin: </span>
-                  </td>
-                  <td>
-                    <span className="value">{drink.mixins_1}</span>
-                  </td>
-                </tr>
+    <div id="drinksList">
+      <h1>Drinks for <span id="username">{sessionData.userName}</span></h1>
+      <div id="allUserDrinks">
+        {loading ? `loading` : userDrinks.map(drink => {
+          return (
+            <div className="userDrink" key={drink.id}>
+              <table className="userDrinkInfo">
+                <thead>
+                  <tr>
+                    <td colSpan="2">
+                      <h2>{drink.flavour}</h2>
+                    </td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span className="drinkFeature">Mixin: </span>
+                    </td>
+                    <td>
+                      <span className="value">{drink.mixins_1}</span>
+                    </td>
+                  </tr>
 
-                <tr>
-                  <td>
-                    <span className="drinkFeature">Mixin: </span>
-                  </td>
-                  <td>
-                    <span className="value">{drink.mixins_2}</span>
-                  </td>
-                </tr>
+                  <tr>
+                    <td>
+                      <span className="drinkFeature">Mixin: </span>
+                    </td>
+                    <td>
+                      <span className="value">{drink.mixins_2}</span>
+                    </td>
+                  </tr>
 
-                <tr>
-                  <td>
-                    <span className="drinkFeature">Sugar Level: </span>
-                  </td>
-                  <td>
-                    <span className="value">{drink.sugar_level}</span>
-                  </td>
-                </tr>
+                  <tr>
+                    <td>
+                      <span className="drinkFeature">Sugar Level: </span>
+                    </td>
+                    <td>
+                      <span className="value">{drink.sugar_level}</span>
+                    </td>
+                  </tr>
 
-                <tr>
-                  <td>
-                    <span className="drinkFeature">Ice Level: </span>
-                  </td>
-                  <td>
-                    <span className="value">{drink.ice_level}</span>
-                  </td>
-                </tr>
-                <AddKilojoules flavour={drink.flavour} mixinOne={drink.mixins_1} mixinTwo={drink.mixins_2} allFlavours={drinksData} allMixins={mixinsData} />
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colSpan="2">
-                    <DrinkCounter drinkCount={drink.counter} drinkId={drink.id} />
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
+                  <tr>
+                    <td>
+                      <span className="drinkFeature">Ice Level: </span>
+                    </td>
+                    <td>
+                      <span className="value">{drink.ice_level}</span>
+                    </td>
+                  </tr>
+                  <AddKilojoules flavour={drink.flavour} mixinOne={drink.mixins_1} mixinTwo={drink.mixins_2} allFlavours={drinksData} allMixins={mixinsData} />
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colSpan="2">
+                      <DrinkCounter drinkCount={drink.counter} drinkId={drink.id} />
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
 
-            <Router>
-              <div id="drinkControls">
+              <Router>
+                <div id="drinkControls">
 
-                <button><Link to="/updateDrink">Update Drink</Link></button>
+                  <button><Link to="/updateDrink">Update Drink</Link></button>
 
-                <Route path="/updateDrink">
-                  <UpdateDrink drinkId={drink.id} mixinsData={mixinsData} />
-                </Route>
+                  <Route path="/updateDrink">
+                    <UpdateDrink drinkId={drink.id} mixinsData={mixinsData} />
+                  </Route>
 
-                <DeleteDrink drinkId={drink.id} />
-              </div>
-            </Router>
+                  <DeleteDrink drinkId={drink.id} />
+                </div>
+              </Router>
 
-          </div>
-        )
-      }
-      )}
+            </div>
+          )
+        }
+        )}
+      </div>
+
     </div>
 
   )
