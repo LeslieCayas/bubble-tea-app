@@ -30,7 +30,7 @@ app.use(express.json())
 app.listen(port, () => console.log(`server listening on port: ${port}`));
 app.use(express.static('./client/build'))
 
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 })
 
