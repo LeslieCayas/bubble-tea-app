@@ -30,14 +30,16 @@ app.use(express.json())
 app.listen(port, () => console.log(`server listening on port: ${port}`));
 app.use(express.static('./client/build'))
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-})
 
 app.use('/api/sessions', sessionsController)
 app.use('/api/users', usersController)
 app.use('/api/drinks', drinksController)
 app.use('/api/mixins', mixinsController)
 app.use('/api/userDrinks', userDrinksController)
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+})
+
 
 app.use(errorHandler)
