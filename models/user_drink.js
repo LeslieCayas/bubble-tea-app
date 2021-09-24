@@ -24,19 +24,18 @@ const UserDrinks = {
       })
   },
 
-  updateUserDrinks(flavour, mixins_1, mixins_2, sugar_level, ice_level, counter, id) {
+  updateUserDrinks(flavour, mixins_1, mixins_2, sugar_level, ice_level, id) {
     const sql = `
       UPDATE users_drinks
       SET flavour = $1,
           mixins_1 = $2,
           mixins_2 = $3,
           sugar_level = $4,
-          ice_level = $5,
-          counter = $6
-      WHERE id = $7
+          ice_level = $5
+      WHERE id = $6
     `
 
-    return db.query(sql, [flavour, mixins_1, mixins_2, sugar_level, ice_level, counter, id])
+    return db.query(sql, [flavour, mixins_1, mixins_2, sugar_level, ice_level, id])
       .then(dbResponse => {
         return dbResponse.rows[0]
       })

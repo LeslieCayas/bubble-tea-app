@@ -1,16 +1,16 @@
 import axios from "axios"
-import { useState, useEffect, setState } from "react"
+import { useState, useEffect } from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import UpdateDrink from './UpdateDrink'
 import DeleteDrink from './DeleteDrink'
 import DrinkCounter from './DrinkCounter'
 import AddKilojoules from './AddKilojoules'
+import '../../css/UserDrinks.scss'
 
 function UserDrinks() {
   const [userDrinks, setUserDrinks] = useState([])
   const [mixinsData, setMixinsData] = useState([])
   const [drinksData, setDrinksData] = useState([])
-  const [sessionsData, setSessionsData] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -18,52 +18,97 @@ function UserDrinks() {
       axios.get('/api/userDrinks'),
       axios.get('/api/mixins'),
       axios.get('/api/drinks'),
-      axios.get('/api/sessions')
-    ]).then(([userDrinks, mixinData, drinksData, sessionsData]) => {
+
+    ]).then(([userDrinks, mixinData, drinksData]) => {
       setUserDrinks(userDrinks.data)
       setMixinsData(mixinData.data)
       setDrinksData(drinksData.data)
-      setSessionsData(sessionsData.data)
       setLoading(false)
-    }) 
+    })
 
   }, [])
 
   return (
-    <Router>
-      <div>
-        {loading ? `loading` : userDrinks.map(drink => {
-          return (
-            <div key={drink.id} className="userDrink">
-              <ul>
-                <h2>{drink.flavour}</h2>
-                <li><span className="drinkFeature">Mixin: </span>{drink.mixins_1}</li>
-                <li><span className="drinkFeature">Mixin: </span>{drink.mixins_2}</li>
-                <li><span className="drinkFeature">Sugar Level: </span>{drink.sugar_level}</li>
-                <li><span className="drinkFeature">Ice Level: </span>{drink.ice_level}</li>
+
+    <div id="allUserDrinks">
+      {loading ? `loading` : userDrinks.map(drink => {
+        return (
+          <div className="userDrink" key={drink.id}>
+            <table className="userDrinkInfo">
+              <thead>
+                <tr>
+                  <td colSpan="2">
+                    <h2>{drink.flavour}</h2>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span className="drinkFeature">Mixin: </span>
+                  </td>
+                  <td>
+                    <span className="value">{drink.mixins_1}</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span className="drinkFeature">Mixin: </span>
+                  </td>
+                  <td>
+                    <span className="value">{drink.mixins_2}</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span className="drinkFeature">Sugar Level: </span>
+                  </td>
+                  <td>
+                    <span className="value">{drink.sugar_level}</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span className="drinkFeature">Ice Level: </span>
+                  </td>
+                  <td>
+                    <span className="value">{drink.ice_level}</span>
+                  </td>
+                </tr>
                 <AddKilojoules flavour={drink.flavour} mixinOne={drink.mixins_1} mixinTwo={drink.mixins_2} allFlavours={drinksData} allMixins={mixinsData} />
-                <DrinkCounter drinkCount={drink.counter} drinkId={drink.id} />
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colSpan="2">
+                    <DrinkCounter drinkCount={drink.counter} drinkId={drink.id} />
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
 
-                <div id="drinkControls">
-                  <Link to="/updateDrink">Update Drink</Link>
+            <Router>
+              <div id="drinkControls">
 
-                  <Route path="/updateDrink">
-                    <UpdateDrink drinkId={drink.id} mixinsData={mixinsData} />
-                  </Route>
+                <button><Link to="/updateDrink">Update Drink</Link></button>
 
-                  <DeleteDrink drinkId={drink.id} />
+                <Route path="/updateDrink">
+                  <UpdateDrink drinkId={drink.id} mixinsData={mixinsData} />
+                </Route>
 
-                </div>
-              </ul>
-            </div>
-          )
-        }
-        )}
-      </div>
-    </Router>
+                <DeleteDrink drinkId={drink.id} />
+              </div>
+            </Router>
+
+          </div>
+        )
+      }
+      )}
+    </div>
 
   )
 }
 
 export default UserDrinks
-

@@ -3,11 +3,16 @@
 $red: #dd5653;
 $sage: #bddbc5;
 $beige: #F2E2CE;
+$dark-beige: #e7d4bd;
 $aqua: #94D7CD;
 $light-orange: #f28f38;
 $dark-orange:#d95525;
 $rose: #DB978E;
 $dark-green: #697322;
+
+body {
+  background-color:#fafafa;
+}
 
 #navigation{
   width: 100%;
@@ -20,6 +25,7 @@ $dark-green: #697322;
     align-items: center;
     background-color: $beige;
     column-gap: 2em;
+    border-bottom: 1px solid $dark-beige;
     h1 {
       font-family: 'Calistoga', cursive;
       font-size: 2.5em;

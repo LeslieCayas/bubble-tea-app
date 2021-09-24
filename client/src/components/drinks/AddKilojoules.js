@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import '../../css/UserDrinks.scss'
 
 function AddKilojoules(props) {
   const [totalKj, setTotalKj] = useState('')
@@ -22,14 +23,19 @@ function AddKilojoules(props) {
     })
 
     const totalKjArr = [...mixinKjArr, drinkArrData.kilojoules]
-    const totalKjValue = totalKjArr.reduce((previousValue, currentValue) => previousValue+currentValue)
+    const totalKjValue = totalKjArr.reduce((previousValue, currentValue) => previousValue + currentValue)
     setTotalKj(totalKjValue)
   }
 
   return (
-    <span>
-      <span className="drinkFeature">Energy: </span> {totalKj} Kj
-    </span>
+      <tr>
+        <td>
+          <span className="drinkFeature">Energy: </span>
+        </td>
+        <td>
+          <span className="value">{totalKj} Kj /serve</span>
+        </td>
+      </tr>
   )
 }
 

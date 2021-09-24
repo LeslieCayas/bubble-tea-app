@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
+
+$red: #dd5653;
+$sage: #bddbc5;
+$beige: #F2E2CE;
+$dark-beige: #e7d4bd;
+$aqua: #94D7CD;
+$light-orange: #f0b17a;
+$dark-orange:#d95525;
+$rose: #DB978E;
+$dark-green: #697322;
+
+#allUserDrinks {
+  display: flex;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content:center;
+  gap: 2em;
+  h2 {
+    color: $rose;
+  }
+  td {
+    padding-bottom: 0.5em;
+  }
+  .userDrink {
+    table {
+      table-layout: fixed;
+    }
+    span.drinkFeature {
+      font-weight: 550;
+      color: $dark-green;
+    }
+    span.value {
+      float: right;
+    }
+  }
+  .drinkCounter {
+    text-align: center;
+  }
+  #drinkControls {
+    text-align: center;
+  }
+}
+
+button, input[type="submit"] {
+  border: none;
+  padding: 5px;
+  background-color: $rose;
+  border-radius: 5px;
+  margin: 5px;
+  transition: 0.3s;
+  color: #fafafa;
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: $light-orange;
+}
+
+button a {
+  text-decoration: none;
+  color: #fafafa;
+}
