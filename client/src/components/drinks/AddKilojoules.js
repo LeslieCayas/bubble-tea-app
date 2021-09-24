@@ -6,7 +6,7 @@ function AddKilojoules(props) {
 
   useEffect(() => {
     addKilojoules()
-  }, [])
+  })
 
   const addKilojoules = () => {
     const mixinOneData = props.allMixins.find(mixin => mixin.mixin === props.mixinOne)

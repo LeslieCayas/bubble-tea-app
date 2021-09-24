@@ -66,5 +66,3 @@ function validateDrink(req, res, next) {
 }
 
 module.exports = validateDrink
-
-// console.log(getAllMixins())

@@ -1,6 +1,6 @@
-import react from 'react'
 import '../css/Home.scss'
 import mainImg from '../images/bubble_tea_icons/main.png'
+
 function Home() {
   return (
     <div className="home">

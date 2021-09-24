@@ -1,10 +1,5 @@
-// render the form 
-// form should run axios call onsubmit
-// import React, {useState} from "react"
 import axios from "axios"
 import { Component } from "react"
-
-// axios call should post to sessions 
 
 class Login extends Component {
 
@@ -26,7 +21,7 @@ class Login extends Component {
   render() {
     return (
       <div id="login">
-        <h1>Log Into Your T(EA)racker Account</h1>
+        <h1>Log Into Your <span className="tearacker">T(EA)racker </span> Account</h1>
         {this.state.error !== '' && <span id="errors">
           {this.state.error}</span>}
 

@@ -3,10 +3,6 @@ import { Component } from "react"
 import '../../css/DrinkForm.scss'
 import pinkImg from '../../images/bubble_tea_icons/pink.png'
 
-// axios call to get all drinks from drink data
-// use data to prefill drop down boxes
-// make axios call to post to userdrinks api
-
 class CreateDrink extends Component {
   state = {
     storeDrinks: [],
@@ -22,7 +18,6 @@ class CreateDrink extends Component {
   setStore = event => {
     const store = event.target.value
     this.setState({ store })
-    // this.getDrinkData(store)
   }
 
   getDrinkData = () => {

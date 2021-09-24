@@ -1,12 +1,11 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import UpdateDrink from './UpdateDrink'
 import DeleteDrink from './DeleteDrink'
 import DrinkCounter from './DrinkCounter'
 import AddKilojoules from './AddKilojoules'
 import '../../css/UserDrinks.scss'
-import session from "express-session"
 
 function UserDrinks() {
   const [userDrinks, setUserDrinks] = useState([])

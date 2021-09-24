@@ -1,10 +1,6 @@
-// render the form 
-// form should run axios call onsubmit
-// import React, {useState} from "react"
 import axios from "axios"
 import { Component } from "react"
-
-// axios call should post to users 
+import '../../css/LoginSignup.scss'
 
 class SignUp extends Component {
 
@@ -29,7 +25,7 @@ class SignUp extends Component {
   render() {
     return (
       <div id="login">
-        <h1>Welcome to the T(EA)racker family!</h1>
+        <h1>Welcome to the <span className="tearacker">T(EA)racker </span> family!</h1>
         {this.state.error !== '' && <span id="errors">{this.state.error}</span>}
 
         <form id="signUp" onSubmit={this.signUp}>

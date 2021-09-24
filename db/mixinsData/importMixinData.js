@@ -5,8 +5,6 @@ const db = require('../db')
 
 const fileString = fs.readFileSync('./MixinsData.csv', 'utf-8')
 const lines = fileString.split('\n')
-// console.log(lines)
-
 
 function importMixinData(lines) {
   lines.forEach(line => {

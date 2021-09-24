@@ -33,10 +33,16 @@ class UserSignupLogin extends Component {
   }
 
   render() {
+    let message
+    if (this.state.userLogin) {
+      message = "Don't have an account?"
+    } else {
+      message = "Already have an account?"
+    }
     return (
       <div id="signupLogin">
         {this.state.userLogin ? <Login /> : <Signup />}
-        <button onClick={this.handleClick}>{this.state.userLogin ? "Sign Up" : "Login"}</button>
+        <span>{message}</span><button onClick={this.handleClick}>{this.state.userLogin ? "Sign Up" : "Login"}</button>
       </div>
     )
   }
