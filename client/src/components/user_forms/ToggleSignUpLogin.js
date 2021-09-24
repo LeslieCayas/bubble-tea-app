@@ -1,11 +1,8 @@
-// default state is userLogin = true
-// if true, render login form and use login axios request (post to sessions api)
-// if button is clicked, set userLogin to false
-// if false, render sign up form and use signup axios request (post to users api)
 import axios from "axios"
 import { Component } from "react"
 import Login from "./Login"
 import Signup from "./Signup"
+import '../../css/LoginSignup.scss'
 
 class UserSignupLogin extends Component {
   state = {
@@ -31,13 +28,6 @@ class UserSignupLogin extends Component {
       })
   }
 
-  logOut = () => {
-    axios.delete('/api/sessions')
-      .then(() => {
-        window.location = '/'
-      })
-  }
-
   handleClick = () => {
     this.setState({ userLogin: !this.state.userLogin })
   }
@@ -45,8 +35,6 @@ class UserSignupLogin extends Component {
   render() {
     return (
       <div id="signupLogin">
-        <span>{this.state.userName !== undefined ? `Welcome, ${this.state.userName}` : `Welcome to Bubble Tea App!`}</span>
-        {this.state.userName && <button onClick={this.logOut}>Log Out</button>}
         {this.state.userLogin ? <Login /> : <Signup />}
         <button onClick={this.handleClick}>{this.state.userLogin ? "Sign Up" : "Login"}</button>
       </div>

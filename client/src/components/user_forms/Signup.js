@@ -29,6 +29,7 @@ class SignUp extends Component {
   render() {
     return (
       <div id="login">
+        <h1>Welcome to the T(EA)racker family!</h1>
         {this.state.error !== '' && <span id="errors">{this.state.error}</span>}
 
         <form id="signUp" onSubmit={this.signUp}>

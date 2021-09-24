@@ -26,6 +26,7 @@ class Login extends Component {
   render() {
     return (
       <div id="login">
+        <h1>Log Into Your T(EA)racker Account</h1>
         {this.state.error !== '' && <span id="errors">
           {this.state.error}</span>}
 

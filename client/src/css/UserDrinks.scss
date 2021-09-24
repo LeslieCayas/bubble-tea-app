@@ -83,3 +83,15 @@ button a {
   text-decoration: none;
   color: #fafafa;
 }
+
+header {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  gap: 2%;
+  h1 {
+    font-family: 'Calistoga', cursive;
+    font-weight: 200;
+    letter-spacing: 1.2px;
+  }
+}

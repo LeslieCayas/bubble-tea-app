@@ -6,6 +6,7 @@ import DeleteDrink from './DeleteDrink'
 import DrinkCounter from './DrinkCounter'
 import AddKilojoules from './AddKilojoules'
 import '../../css/UserDrinks.scss'
+import session from "express-session"
 
 function UserDrinks() {
   const [userDrinks, setUserDrinks] = useState([])
@@ -31,10 +32,21 @@ function UserDrinks() {
 
   }, [])
 
+  const logOut = () => {
+    axios.delete('/api/sessions')
+      .then(() => {
+        window.location = '/'
+      })
+  }
+
   return (
 
     <div id="drinksList">
-      <h1>Drinks for <span id="username">{sessionData.userName}</span></h1>
+      <header>
+        <h1>Drinks for <span id="username">{sessionData.userName}</span></h1>
+        {sessionData.userName && <button onClick={logOut}>Logout</button>}
+      </header>
+
       <div id="allUserDrinks">
         {loading ? `loading` : userDrinks.map(drink => {
           return (
