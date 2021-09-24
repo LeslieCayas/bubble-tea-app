@@ -9,6 +9,7 @@ $light-orange: #f0b17a;
 $dark-orange:#d95525;
 $rose: #DB978E;
 $dark-green: #697322;
+$grey: #444444;
 
 #drinksList {
   h1 {
@@ -17,6 +18,10 @@ $dark-green: #697322;
   }
   span#username {
     color: $red;
+  }
+  h2 {
+    margin-left: 10%;
+    color: $grey;
   }
 }
 #allUserDrinks {

@@ -42,10 +42,10 @@ function UserDrinks() {
 
     <div id="drinksList">
       <header>
-        <h1>Drinks for <span id="username">{sessionData.userName}</span></h1>
-        {sessionData.userName && <button onClick={logOut}>Logout</button>}
+        {sessionData.userName && [<h1>Drinks for <span id="username">{sessionData.userName}</span></h1>, <button onClick={logOut}>Logout</button>]}
+        {!sessionData.userName && <h1>Please sign in!</h1>}
       </header>
-
+      {userDrinks.length === 0 && <h2>Add some drinks!</h2>}
       <div id="allUserDrinks">
         {loading ? `loading` : userDrinks.map(drink => {
           return (
