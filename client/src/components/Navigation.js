@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import ToggleSignUpLogin from './user_forms/ToggleSignUpLogin'
 import UserDrinks from './drinks/UserDrinks'
 import CreateDrink from './drinks/CreateDrink'
+import About from './About'
 import Home from './Home'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -36,7 +37,7 @@ function Navigation() {
         </nav>
         <Switch>
           <Route exact path='/'><Home /></Route>
-          <Route path='/about'></Route>
+          <Route path='/about'><About /></Route>
           <Route path='/your-drinks'><UserDrinks /></Route>
           <Route path='/create-drinks'><CreateDrink /></Route>
           <Route path='/login-signup'><ToggleSignUpLogin /></Route>
