@@ -21,9 +21,9 @@ router.post('/', validateDrink, (req, res) => {
 })
 
 router.patch('/updateDrink/:id', (req, res) => {
-  const { flavour, mixins_1, mixins_2, sugar_level, ice_level, counter } = req.body
+  const { flavour, mixins_1, mixins_2, sugar_level, ice_level } = req.body
   const { id } = req.params
-  UserDrink.updateUserDrinks(flavour, mixins_1, mixins_2, sugar_level, ice_level, counter, id)
+  UserDrink.updateUserDrinks(flavour, mixins_1, mixins_2, sugar_level, ice_level, id)
     .then(updatedInfo => {
       res.json(updatedInfo)
     })
