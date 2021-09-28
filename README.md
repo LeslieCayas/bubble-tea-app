@@ -13,15 +13,31 @@ Using this app, a user can keep track of various milk tea orders using select dr
 - Heroku
 
 ## 🔍 How to use
-- Create an account using the `Login|Signup` button
-- 
+- Create an account using the `Login|Signup` button.
+- Start adding drinks by clicking the `Create Drinks` button.
+- Change the drink counter based on how many drinks ordered.
 
 ## 🖥️ Try it out!
+[The T(EA)racker App](https://pure-bastion-05745.herokuapp.com/)
 
 ## 🤔 Planning
+To create basic wireframes, Figma was used.
+![](./images/wireframe.png)
 
-## Main Features
+## 🌟 Main Features
+- Account creation and sign up.
+- Account and sessions validation.
+- Drink creation and ability to update and delete.
+- Drink creation/update validation.
+- Updating the amount of drinks ordered after the drink has been created.
 
-## 💢 Difficulties
+## 💢 Difficulties Overcome
+- Most of the difficulties with this project were from managing state using React. With managing different components and API calls, it was difficult.
 
 ## 👀 Features to Add
+ - The option to type in a drink if the user's desired drink is not part of the given options.
+ - A map to show nearest milk tea stores based on location.
+ - Responsive CSS.
+
+## 🙌 Acknowledgements
+Special thanks to the instructional team at General Assembly for providing the resources and knowledge to learn full-stack software engineering! I would also like to thank Lindsay Cayas [@Okayasart](https://instagram.com/okayasart) for providing the art seen on this app.
